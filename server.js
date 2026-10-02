@@ -2,11 +2,12 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import itemsRouter from './routes/items.js'
 
 dotenv.config()
 
 const app = express()
-const PORT = 5000
+const PORT = 5001
 
 app.use(cors())
 app.use(express.json())
@@ -18,6 +19,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/', (req, res) => {
   res.send('Backend is working!')
 })
+
+app.use('/api/items', itemsRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
