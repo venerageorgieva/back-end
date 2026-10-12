@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import itemsRouter from './routes/items.js'
+import authRouter from './routes/auth.js'
 
 dotenv.config()
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/items', itemsRouter)
+app.use('/api/auth', authRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
